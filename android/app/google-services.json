@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "10993740853",
+    "firebase_url": "https://esp32-fea08-default-rtdb.firebaseio.com",
+    "project_id": "esp32-fea08",
+    "storage_bucket": "esp32-fea08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10993740853:android:a020ae5df229e8e707957c",
+        "android_client_info": {
+          "package_name": "com.example.confort_zone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCML2ikUmiNfpfcoNZAB5ekmZAsjgcO5t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
