@@ -1,5 +1,7 @@
-import 'package:confort_zone/provider/providers.dart';
-import 'package:confort_zone/screens/screens.dart';
+import 'package:confort_zone/providers/auth_provider.dart';
+import 'package:confort_zone/providers/devices_provider.dart';
+import 'package:confort_zone/providers/users_db_provider.dart';
+import 'package:confort_zone/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +12,22 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(AppState());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UsersDbProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DevicesProvider(),
+        )
+      ],
+      child: AppState(),
+    ),
+  );
 }
 
 class AppState extends StatelessWidget {
@@ -18,14 +35,7 @@ class AppState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: ( _ ) => UsersProvider() ),
-        ChangeNotifierProvider(create: ( _ ) => RegistroProvider() ),
-      ],
-
-      child: const MyApp(),
-    );
+    return const MyApp();
   }
 }
 
@@ -37,11 +47,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      routes: {
-        'home': ( BuildContext context ) =>  HomeScreen(),
-        'login': ( BuildContext context ) => LoginScreen()
-      },
-      initialRoute: 'login',
+      home: HomeScreen(),
     );
   }
 }
